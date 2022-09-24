@@ -20,8 +20,6 @@ const SignUpForm = () => {
   const [formField, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formField;
 
-  console.log(formField);
-
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
   };
