@@ -1,12 +1,14 @@
-import "./sign-in-form.styles.scss";
-import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
 import {
   createUserDocumentFromAuth,
   signInWithGooglePopup,
   signInWithExistingEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import { useState } from "react";
+
+import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
+
+import "./sign-in-form.styles.scss";
 
 const defaultFormFields = {
   email: "",
@@ -25,7 +27,8 @@ const SignInForm = () => {
     event.preventDefault();
 
     try {
-      await signInWithExistingEmailAndPassword(email, password);
+      const { user } = await signInWithExistingEmailAndPassword(email, password);
+
       resetFormFields();
     } catch (e) {
       console.log(e.code);
@@ -48,10 +51,8 @@ const SignInForm = () => {
     setFormFields({ ...formField, [name]: value });
   };
 
-  const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(user);
-  };
+  const signInWithGoogle = async () => await signInWithGooglePopup();
+
   return (
     <div className="sign-up-container">
       <h2>I already have an account</h2>
