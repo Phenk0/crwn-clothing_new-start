@@ -7,7 +7,7 @@ const CategoriesPreview = () => {
   const { categoriesMap } = useContext(CategoriesContext);
 
   return (
-    <div className="category-preview-container">
+    <div>
       {Object.keys(categoriesMap).map((category) => (
         <CategoryPreview key={category} title={category} products={categoriesMap[category]} />
       ))}
