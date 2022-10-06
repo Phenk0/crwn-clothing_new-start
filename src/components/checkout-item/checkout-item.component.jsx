@@ -24,12 +24,9 @@ const CheckoutItem = ({ cartItem }) => {
   const { name, price, imageUrl, quantity } = cartItem;
   const cartItems = useSelector(selectCartItems);
 
-  const increaseItemHandler = () =>
-    dispatch(addItemToCart(cartItems, cartItem));
-  const decreaseItemHandler = () =>
-    dispatch(decreaseItemInCart(cartItems, cartItem));
-  const removeItemHandler = () =>
-    dispatch(removeItemFromCart(cartItems, cartItem));
+  const increaseItemHandler = () => dispatch(addItemToCart(cartItems, cartItem));
+  const decreaseItemHandler = () => dispatch(decreaseItemInCart(cartItems, cartItem));
+  const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
   return (
     <CheckoutItemContainer>
       <ImageContainer>
