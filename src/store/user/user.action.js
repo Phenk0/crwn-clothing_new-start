@@ -14,11 +14,15 @@ export const emailSignInStart = (email, password) =>
   createAction(USER_ACTION_TYPES.EMAIL_SIGN_IN_START, { email, password });
 
 export const signInSuccess = (user) =>
-  createAction(USER_ACTION_TYPES.SING_IN_SUCCESS, user);
+  createAction(USER_ACTION_TYPES.SIGN_IN_SUCCESS, user);
 
 export const signInFailed = (error) =>
-  createAction(USER_ACTION_TYPES.SING_IN_FAILED, error);
+  createAction(USER_ACTION_TYPES.SIGN_IN_FAILED, error);
 
-export const signUpStart = (email, password, display) => {
-  createAction(USER_ACTION_TYPES.SIGN_UP_START, { email, password, display });
+export const signUpStart = (email, password, displayName) => {
+  createAction(USER_ACTION_TYPES.SIGN_UP_START, { email, password, displayName });
 };
+export const signUpSuccess = (user, additionalInformation) =>
+  createAction(USER_ACTION_TYPES.SIGN_UP_SUCCESS, { user, additionalInformation });
+export const signUpFailed = (error) =>
+  createAction(USER_ACTION_TYPES.SIGN_UP_FAILED, error);
