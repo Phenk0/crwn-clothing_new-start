@@ -8,7 +8,6 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsCartOpen } from "../../store/cart/cart.selector";
 
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import {
   LogoContainer,
@@ -16,7 +15,6 @@ import {
   NavLink,
   NavLinks,
 } from "./navigation.styles";
-import { useEffect } from "react";
 import { signOutStart } from "../../store/user/user.action";
 
 const Navigation = () => {
