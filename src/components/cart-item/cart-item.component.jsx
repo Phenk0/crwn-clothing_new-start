@@ -1,4 +1,3 @@
-import "./cart-item.styles";
 import { CartItemContainer, ItemDetails, Name, Price } from "./cart-item.styles";
 
 const CartItem = ({ cartItem }) => {
