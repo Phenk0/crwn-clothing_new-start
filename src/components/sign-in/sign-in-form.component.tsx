@@ -1,17 +1,29 @@
-import { useState } from "react";
+import { useState, FormEvent, ChangeEvent } from "react";
 import { useDispatch } from "react-redux";
 
-import { emailSignInStart, googleSignInStart } from "../../store/user/user.action";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action";
 
 import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { ButtonsContainer, SignInContainer } from "./sign-in-form.styles";
+import { type } from "os";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
+/////////////////////////to catch error.code
+export function isMyError(error: any): error is MyError {
+  return typeof error.code === "string";
+}
+type MyError = {
+  code: string;
+};
+///////////////////////
 
 const SignInForm = () => {
   const [formField, setFormFields] = useState(defaultFormFields);
@@ -23,28 +35,27 @@ const SignInForm = () => {
     setFormFields(defaultFormFields);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     try {
       dispatch(emailSignInStart(email, password));
       resetFormFields();
-    } catch (e) {
-      console.log(e.code);
-      switch (e.code) {
-        case "auth/wrong-password":
-          alert("wrong password");
-          break;
-        case "auth/user-not-found":
-          alert("user not found");
-          break;
-        default:
-          alert("some error");
-      }
+    } catch (e: unknown) {
+      if (isMyError(e))
+        switch (e.code) {
+          case "auth/wrong-password":
+            alert("wrong password");
+            break;
+          case "auth/user-not-found":
+            alert("user not found");
+            break;
+          default:
+            alert("some error");
+        }
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     setFormFields({ ...formField, [name]: value });
