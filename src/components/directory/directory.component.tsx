@@ -1,8 +1,9 @@
 import DirectoryItem from "../directory-item/directory-item.component";
 import { DirectoryContainer } from "./directory.styles";
+import { Key } from "react";
 
 export type Category = {
-  id: number;
+  id: Key;
   title: string;
   imageUrl: string;
   route: string;

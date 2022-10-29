@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -6,6 +7,7 @@ import {
   removeItemFromCart,
 } from "../../store/cart/cart.action";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import { CartItem } from "../../store/cart/cart.types";
 
 import {
   Arrow,
@@ -18,15 +20,22 @@ import {
   Value,
 } from "./checkout-item.styles";
 
-const CheckoutItem = ({ cartItem }) => {
+type CheckoutItemProps = {
+  cartItem: CartItem;
+};
+
+const CheckoutItem: FC<CheckoutItemProps> = ({ cartItem }) => {
   const dispatch = useDispatch();
 
   const { name, price, imageUrl, quantity } = cartItem;
   const cartItems = useSelector(selectCartItems);
 
-  const increaseItemHandler = () => dispatch(addItemToCart(cartItems, cartItem));
-  const decreaseItemHandler = () => dispatch(decreaseItemInCart(cartItems, cartItem));
-  const removeItemHandler = () => dispatch(removeItemFromCart(cartItems, cartItem));
+  const increaseItemHandler = () =>
+    dispatch(addItemToCart(cartItems, cartItem));
+  const decreaseItemHandler = () =>
+    dispatch(decreaseItemInCart(cartItems, cartItem));
+  const removeItemHandler = () =>
+    dispatch(removeItemFromCart(cartItems, cartItem));
   return (
     <CheckoutItemContainer>
       <ImageContainer>

@@ -10,19 +10,18 @@ import FormInput from "../form-input/form-input.component";
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 
 import { ButtonsContainer, SignInContainer } from "./sign-in-form.styles";
-import { type } from "os";
 
 const defaultFormFields = {
   email: "",
   password: "",
 };
 /////////////////////////to catch error.code
-export function isMyError(error: any): error is MyError {
-  return typeof error.code === "string";
-}
 type MyError = {
   code: string;
 };
+export function isMyError(error: any): error is MyError {
+  return typeof error.code === "string";
+}
 ///////////////////////
 
 const SignInForm = () => {
