@@ -26,7 +26,7 @@ export const Preview = styled.div`
     grid-column-gap: 15px;
     grid-row-gap: 25px;
   }
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 300px) {
     grid-template-columns: 1fr;
     grid-row-gap: 25px;
   }
