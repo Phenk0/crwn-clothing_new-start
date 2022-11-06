@@ -35,7 +35,7 @@ export const ProductCardContainer = styled.div`
       display: block;
       opacity: 0.9;
       min-width: unset;
-      padding: 0 10px;
+      padding: 0;
       &:hover {
         img {
           opacity: unset;
